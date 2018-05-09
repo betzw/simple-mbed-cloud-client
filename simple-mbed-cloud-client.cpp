@@ -96,6 +96,12 @@ int SimpleMbedCloudClient::init() {
             return 1;
         }
 
+#if PAL_USE_INTERNAL_FLASH
+        if(pal_internalFlashInit() != 0) {
+            return 1;
+        }
+#endif
+
         reset_storage();
     }
 #else
